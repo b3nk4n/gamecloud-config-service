@@ -1,0 +1,21 @@
+server:
+  port: 8888
+  tomcat:
+    connection-timeout: 3s
+    keep-alive-timeout: 20s
+    threads:
+      max: 64
+      min-spare: 4
+
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/b3nk4n/gamecloud-config
+          default-label: main  # label is an abstraction and refers to the branch name in case of git
+          timeout: 10
+          clone-on-start: true
+          force-pull: true  # discard local changes

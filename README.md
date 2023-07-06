@@ -20,3 +20,18 @@ After building the application, you can also run it from the Java CLI:
 ```bash
 java -jar build/libs/config-service-0.0.1-SNAPSHOT.jar
 ```
+
+## Usage Examples
+
+As a prerequisite for the following examples, you need [HTTPie](https://httpie.io/).
+Alternatively, you can use `curl` as usual.
+
+```bash
+brew update
+brew install httpie
+```
+
+```bash
+http :8888/catalog-service/default
+http :8888/catalog-service/prod
+```
