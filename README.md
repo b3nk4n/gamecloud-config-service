@@ -35,3 +35,7 @@ brew install httpie
 http :8888/catalog-service/default
 http :8888/catalog-service/prod
 ```
+
+## Local development and tools
+
+Check out the rather similar command for GameCloud [catalog-service](https://github.com/b3nk4n/gamecloud-catalog-service#local-development-and-tools).

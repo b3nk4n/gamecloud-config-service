@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-service
+  labels:
+    app: config-service
+spec:
+  selector:
+    matchLabels:
+      app: config-service
+  template:
+    metadata:
+      labels:
+        app: config-service
+    spec:
+      containers:
+        - name: config-service
+          image: gamecloud-config-service
+          imagePullPolicy: IfNotPresent
+          lifecycle:
+            preStop:
+              exec:
+                # Delay SIGTERM signal to Pod, so that K8s has enough time to inform other components. To ensure that e.g. the
+                # service registry is updated, no requests are forward to the terminating pod anymore due to race condition.
+                command: [ "sh", "-c", "sleep 3" ]
+          ports:
+            - containerPort: 8888
+          env:
+            - name: BPL_JVM_THREAD_COUNT
+              value: "50"
